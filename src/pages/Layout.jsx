@@ -1,3 +1,4 @@
+//pages/Layout.jsx
 import { Outlet } from "react-router-dom";
 import AppMain from '../components/AppMain'
 import AppHeader from '../components/AppHeader'
@@ -7,7 +8,7 @@ export default function Layout(){
     return(
         <>
             <AppHeader/>
-            <main>
+            <main id="debug">
                 <Outlet/>
             </main>
             <AppFooter/>
