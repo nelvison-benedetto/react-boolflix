@@ -1,11 +1,41 @@
 @import './index.css'; /* import module x base colors  */
 
-header div nav a{
-    text-decoration: none;
-    &.active{
-        text-decoration: underline;
+header{
+    background-color: black;
+    h1{ color: red;}
+    div nav a{
+        text-decoration: none;
+        color: red;
+        &.active{
+            text-decoration: underline;
+        }
     }
 }
-header div form{
-    
+
+.entertainment_card{
+    position: relative;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    .img_poster_card{
+        width: 100%;
+        aspect-ratio: 3 / 4;   /* 16/9 proporzioni video youtube */
+        object-fit: cover;  /* copre il contenitore mantenendo le proporzioni   */
+        /* transition: transform 0.62s ease;  FIX TRANSACTION */
+        &:hover{
+            opacity: 0;
+        }
+    }
+    .card_details{
+        position: absolute;
+        top:0; left: 0;
+    }
+}
+
+.border_movie{
+   /* background-color: aquamarine; */
+   outline: 10px solid red; /*border cut by overflow: hidden;!!*/
+}
+.border_tv{
+    outline: 10px solid orange;
+    /* background-color: blue; */
 }

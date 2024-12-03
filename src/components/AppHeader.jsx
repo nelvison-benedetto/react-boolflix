@@ -10,10 +10,10 @@ export default function AppHeader(){
 
     return(
         <header>
-            <div className="container-fluid bg-light d-flex align-items-center justify-content-around">
+            <div className="container-fluid d-flex align-items-center justify-content-around">
                 <h1>Boolflix</h1>
                 <MainMenu/>
-                <form onSubmit={handleSearchForm} className="formsearch">
+                <form className="formsearch">
                     <input 
                         type="text"
                         className=""

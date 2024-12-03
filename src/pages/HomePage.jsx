@@ -8,9 +8,9 @@ export default function HomePage(){
 
     return(
         <div className="container">
-            <h1>main body Home Page</h1>
+            <h3 className="bolder text-danger py-2">ORIGINAL BOOLFLIX</h3>
             {/* <button className="btn btn-primary" onClick={showSearchedMovie}>show searchedMovie</button> */}
-            <section className='row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 mb-3'>
+            <section className='row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-5'>
                 {filteredEntertainment.map((item,index)=> <MovieCard key={item.id} data={item}  /> )}
             </section>
         </div>

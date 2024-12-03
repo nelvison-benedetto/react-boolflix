@@ -17,7 +17,7 @@ export default function FormProvider({children}){   //{children} è tutto cio ch
     const search_movieurl = 'movie';
     const search_tvurl = 'tv';
 
-    const api_key = 'b54528fd2094325fb6dbe6dd26ad57ef';
+    const api_key = 'b54528fd2094325fb6dbe6dd26ad57ef';  //TO SAVE AS ENV VAR!
 
     function handleSearchForm(e){
         e.preventDefault();
