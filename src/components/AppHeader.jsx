@@ -6,7 +6,7 @@ import { FormContext } from "../contexts/FormProvider";
 
 export default function AppHeader(){
 
-    const {searchedMovie, handleSearchForm} = useContext(FormContext);
+    const {searchedEntertainment, handleSearchForm} = useContext(FormContext);
 
     return(
         <header>
@@ -21,7 +21,7 @@ export default function AppHeader(){
                         id='searchText'
                         aria-describedby="searchelper"  //add it when there isn,t label 
                         placeholder="search movie..."
-                        value={searchedMovie}
+                        value={searchedEntertainment}
                         onChange={handleSearchForm}
                     />
                 </form>
