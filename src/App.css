@@ -16,17 +16,39 @@ header{
     position: relative;
     border-radius: 0.8rem;
     overflow: hidden;
+
     .img_poster_card{
         width: 100%;
         aspect-ratio: 3 / 4;   /* 16/9 proporzioni video youtube */
         object-fit: cover;  /* copre il contenitore mantenendo le proporzioni   */
-        /* transition: transform 0.62s ease;  FIX TRANSACTION */
-        &:hover{
-            opacity: 0;
-        }
+        z-index: 2;
+        /* transition: opacity 0.62s ease; */
+        /* &:hover{
+            background-color: black;
+        } */
     }
+    /* Pseudo-elemento per creare l'overlay scuro */
+    .img_poster_card::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(43, 146, 27, 0.5);  /* Colore scuro con trasparenza */
+        opacity: 1;  /* Inizialmente 0 invisibile */
+        transition: opacity 0.62s ease; /* Transizione per il cambiamento di opacità */
+        pointer-events: none; /* Per evitare che l'overlay interferisca con gli altri eventi del mouse */
+        z-index: 100;
+    }
+    .img_poster_card:hover::after{
+        cursor: pointer;
+        opacity: 1;  
+    }
+
     .card_details{
         position: absolute;
+        z-index: 0;
         top:0; left: 0;
     }
 }

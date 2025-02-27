@@ -1,7 +1,9 @@
 //contexts/FormProvider.jsx
 import { createContext, useState, useEffect } from "react";
 
-export const FormContext = createContext();
+export const FormContext = createContext();  
+   //createContext() crea obj che ha 2 componenti: Provider(che fornisce i dati a tutti i componenti figli) e Consumer(/useContext) che viene usato dai componenti figli x leggere i dati forniti dal provider
+   //ora se un componente vuole accedere ai dati, non usa le props ma usa useContext(FormContext) !
 
 export default function FormProvider({children}){   //{children} è tutto cio che è wrappato dentro <FormProvider></FormProvider> dal file dove lo utilizzi
     const [movies, setMovies] = useState([]);
@@ -10,14 +12,16 @@ export default function FormProvider({children}){   //{children} è tutto cio ch
     const [filteredEntertainment, setFilteredEntertainment] = useState([]);
 
     const api_base_url = 'https://api.themoviedb.org';
+
     const api_base_img_url = 'https://image.tmdb.org/t/p';  // '/p/' means 'path' x images files ect
-    const img_poster_size_url = 'w342'
+    const img_poster_size_url = 'w342'  //you can set different image sizes
     const version_url = '3';
     const search_modeurl = 'search';
     const search_movieurl = 'movie';
     const search_tvurl = 'tv';
 
-    const api_key = 'b54528fd2094325fb6dbe6dd26ad57ef';  //TO SAVE AS ENV VAR!
+    // const api_key = 'b54528fd2094325fb6dbe6dd26ad57ef';  //TO SAVE AS ENV VAR!
+    const api_key = import.meta.env.VITE_API_KEY;
 
     function handleSearchForm(e){
         e.preventDefault();
@@ -37,7 +41,7 @@ export default function FormProvider({children}){   //{children} è tutto cio ch
         const movie_url = `${api_base_url}/${version_url}/${search_modeurl}/${search_movieurl}?api_key=${api_key}&query=${searchedEntertainmentUrl}`;
         const tv_url = `${api_base_url}/${version_url}/${search_modeurl}/${search_tvurl}?api_key=${api_key}&query=${searchedEntertainmentUrl}`;
 
-        // fetch(url) //basic fetch x movies
+        // fetch(url)  //basic fetch x movies
         //     .then(res => res.json())
         //     .then(response =>{
         //         setFilteredMovies(response.results);  //response.results not response.data
@@ -64,15 +68,15 @@ export default function FormProvider({children}){   //{children} è tutto cio ch
     }
 
     return(
-        <FormContext.Provider 
-            value={{
+        <FormContext.Provider //contenitore globale dei dati
+            value={{  //contiene tutti i dati e funzioni che vogliamo rendere disponibili nei componenti figli
                 searchedEntertainment, setSearchedEntertainment, handleSearchForm,
                 filteredEntertainment, setFilteredEntertainment,
                 api_base_img_url, img_poster_size_url
             }}>
-            {children}
+            {children}   {/*questo rappresenta tutta la gerarchia nested all'interno di <FormProvider></FormProvider> in file main.jsx! */}
         </FormContext.Provider>
-    );
+    );  //ora i figli possono semplicemente fare const{searchedEntertainment,filteredEntertainment}=useContext(FormContext); x accedere in realtime a searchedEntertainment e filteredEntertainment!
 }
 
 
